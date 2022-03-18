@@ -50,7 +50,27 @@ class SpartanManagement:
             print(str(ex))
             return str(ex)
 
+    def get_trainee(self, id):
 
+        try:
+            with open(self.DATA_FILE_NAME, self.DATA_FILE_READ_MODE) as data_file:
+                self.Spartan_Trainees_Dict = json.load(data_file)
+            if id in self.Spartan_Trainees_Dict:
+                return str(self.Spartan_Trainees_Dict[id])
+            else:
+                return "The spartan id is not valid."
+
+        except Exception as ex:
+            print(str(ex))
+            return str(ex)
+
+    def get_trainees(self):
+
+        try:
+            return list(self.Spartan_Trainees_Dict.values())
+        except Exception as ex:
+            print(str(ex))
+            return str(ex)
 
     def __update_json(self):
 
