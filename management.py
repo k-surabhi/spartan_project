@@ -38,3 +38,30 @@ class SpartanManagement:
             print(str(ex))
             return str(ex)
 
+    def remove_trainee(self, id):
+
+        try:
+            self.Spartan_Trainees_Dict.pop(id, None)
+
+            self.__update_json()
+            return "SUCCESS"
+
+        except Exception as ex:
+            print(str(ex))
+            return str(ex)
+
+
+
+    def __update_json(self):
+
+        try:
+            with open(self.DATA_FILE_NAME, self.DATA_FILE_WRITE_MODE) as jsonfile:
+                jsonfile.seek(0)
+                json.dump(self.Spartan_Trainees_Dict, jsonfile, default=lambda o: o.__dict__, indent=4)
+                jsonfile.truncate()
+
+            return "SUCCESS"
+
+        except Exception as ex:
+            print(str(ex))
+            return str(ex)
