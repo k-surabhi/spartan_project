@@ -7,7 +7,7 @@ spartan_management = SpartanManagement()
 
 @app.route('/', methods=["GET"])
 def home_page():
-  return "Sparta-Trainee Management System"
+    return "Sparta-Trainee Management System"
 
 
 @app.route('/spartan/add', methods = ['POST'])
@@ -31,17 +31,18 @@ def get_spartan(spartan_id):
     return spartan_management.get_trainee(spartan_id)
 
 
-@app.route('/sparta/remove', methods = ["POST"])
-def del_spartan(spartan_id):
+@app.route('/spartan/remove', methods = ["POST"])
+def del_spartan():
     spartan_id = request.args.get('id')
     return spartan_management.remove_trainee(spartan_id)
 
 
 @app.route('/spartan', methods = ["GET"])
-def get_spartans(spartan_id):
+def get_spartans():
     data = jsonify(spartan_management.get_trainees())
     return data
 
 
 if __name__ == "__main__":
-  app.run()
+
+    app.run()

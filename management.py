@@ -1,21 +1,20 @@
 import json
 from spartan import Spartan
 
-
 class SpartanManagement:
     DATA_FILE_NAME = "data.json"
     DATA_FILE_READ_MODE = "r"
     DATA_FILE_WRITE_MODE = "w+"
 
-    Spartan_Trainees_Dict = {}
-
     def __init__(self):
         try:
+            self.Spartan_Trainees_Dict = {}
+
             with open(self.DATA_FILE_NAME, self.DATA_FILE_READ_MODE) as data_file:
                 self.Spartan_Trainees_Dict = json.load(data_file)
         except:
             pass
-
+        
     def add_trainee(self, id, f_name, l_name, b_year, b_month, b_day, course, stream):
 
         try:
@@ -53,8 +52,6 @@ class SpartanManagement:
     def get_trainee(self, id):
 
         try:
-            with open(self.DATA_FILE_NAME, self.DATA_FILE_READ_MODE) as data_file:
-                self.Spartan_Trainees_Dict = json.load(data_file)
             if id in self.Spartan_Trainees_Dict:
                 return str(self.Spartan_Trainees_Dict[id])
             else:
@@ -80,7 +77,8 @@ class SpartanManagement:
                 json.dump(self.Spartan_Trainees_Dict, jsonfile, default=lambda o: o.__dict__, indent=4)
                 jsonfile.truncate()
 
-            return "SUCCESS"
+            with open(self.DATA_FILE_NAME, self.DATA_FILE_READ_MODE) as data_file:
+                self.Spartan_Trainees_Dict = json.load(data_file)
 
         except Exception as ex:
             print(str(ex))

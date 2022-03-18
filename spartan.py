@@ -1,9 +1,7 @@
-from pickle import FALSE
 import unittest
 
-
 class Spartan:
-
+    
     def __init__(self):
         self._spartan_id = 0
         self._first_name = ""
@@ -17,7 +15,7 @@ class Spartan:
     @property
     def spartan_id(self):
         return self._spartan_id
-
+    
     @spartan_id.setter
     def spartan_id(self, id):
         if isinstance(id, int) and id > 0:
@@ -28,7 +26,7 @@ class Spartan:
     @property
     def first_name(self):
         return self._first_name
-
+    
     @first_name.setter
     def first_name(self, name):
         if isinstance(name, str) and len(name.strip()) > 1:
@@ -39,7 +37,7 @@ class Spartan:
     @property
     def last_name(self):
         return self._last_name
-
+    
     @last_name.setter
     def last_name(self, name):
         if isinstance(name, str) and len(name.strip()) > 1:
@@ -50,7 +48,7 @@ class Spartan:
     @property
     def birth_year(self):
         return self._birth_year
-
+    
     @birth_year.setter
     def birth_year(self, year):
         if isinstance(year, int) and year >= 1900 and year <= 2014:
@@ -61,7 +59,7 @@ class Spartan:
     @property
     def birth_month(self):
         return self._birth_month
-
+    
     @birth_month.setter
     def birth_month(self, month):
         if isinstance(month, int) and month >= 1 and month <= 12:
@@ -72,7 +70,7 @@ class Spartan:
     @property
     def birth_day(self):
         return self._birth_day
-
+    
     @birth_day.setter
     def birth_day(self, day):
         if isinstance(day, int) and day >= 1 and day <= 31:
@@ -83,7 +81,7 @@ class Spartan:
     @property
     def course(self):
         return self._course
-
+    
     @course.setter
     def course(self, c):
         if isinstance(c, str):
@@ -94,7 +92,7 @@ class Spartan:
     @property
     def stream(self):
         return self._stream
-
+    
     @stream.setter
     def stream(self, s):
         if isinstance(s, str):
@@ -105,9 +103,8 @@ class Spartan:
     def __str__(self):
         return f"Spartan ID: {self.spartan_id} - First Name: {self.first_name} - Last Name: {self.last_name} - Birth Day: {self.birth_day} - Birth Month: {self.birth_month} - Birth year: {self.birth_year} - Course: {self.course} - Stream: {self.stream}"
 
-
 class SpartanTest(unittest.TestCase):
-
+    
     def test_spartan_basic(self):
         s = Spartan()
         s.spartan_id = 1
@@ -136,7 +133,7 @@ class SpartanTest(unittest.TestCase):
 
         with self.assertRaises(ValueError):
             s.spartan_id = -1
-
+        
         with self.assertRaises(ValueError):
             s.spartan_id = 1.1
 
@@ -145,7 +142,7 @@ class SpartanTest(unittest.TestCase):
 
         with self.assertRaises(ValueError):
             s.spartan_id = "  "
-
+        
         with self.assertRaises(ValueError):
             s.spartan_id = "1"
 
@@ -157,16 +154,16 @@ class SpartanTest(unittest.TestCase):
 
         with self.assertRaises(ValueError):
             s.first_name = -1
-
+        
         with self.assertRaises(ValueError):
             s.first_name = 1
 
         with self.assertRaises(ValueError):
             s.first_name = ""
-
+        
         with self.assertRaises(ValueError):
             s.first_name = "A"
-
+                
         with self.assertRaises(ValueError):
             s.first_name = "A  "
 
@@ -181,16 +178,16 @@ class SpartanTest(unittest.TestCase):
 
         with self.assertRaises(ValueError):
             s.last_name = -1
-
+        
         with self.assertRaises(ValueError):
             s.last_name = 1
 
         with self.assertRaises(ValueError):
             s.last_name = ""
-
+        
         with self.assertRaises(ValueError):
             s.last_name = "A"
-
+                
         with self.assertRaises(ValueError):
             s.last_name = "A  "
 
@@ -202,13 +199,13 @@ class SpartanTest(unittest.TestCase):
 
         with self.assertRaises(ValueError):
             s.birth_year = 0
-
+        
         with self.assertRaises(ValueError):
             s.birth_year = 1899
 
         with self.assertRaises(ValueError):
             s.birth_year = 2015
-
+        
         with self.assertRaises(ValueError):
             s.birth_year = ""
 
@@ -220,7 +217,7 @@ class SpartanTest(unittest.TestCase):
 
         with self.assertRaises(ValueError):
             s.birth_month = 0
-
+        
         with self.assertRaises(ValueError):
             s.birth_month = -1
 
@@ -229,7 +226,7 @@ class SpartanTest(unittest.TestCase):
 
         with self.assertRaises(ValueError):
             s.birth_month = 13
-
+        
         with self.assertRaises(ValueError):
             s.birth_month = ""
 
@@ -241,7 +238,7 @@ class SpartanTest(unittest.TestCase):
 
         with self.assertRaises(ValueError):
             s.birth_day = 0
-
+        
         with self.assertRaises(ValueError):
             s.birth_day = -1
 
@@ -250,7 +247,7 @@ class SpartanTest(unittest.TestCase):
 
         with self.assertRaises(ValueError):
             s.birth_day = 32
-
+        
         with self.assertRaises(ValueError):
             s.birth_day = ""
 
@@ -264,7 +261,7 @@ class SpartanTest(unittest.TestCase):
             s.course = 0
 
         with self.assertRaises(ValueError):
-            s.course = FALSE
+            s.course = False
 
         with self.assertRaises(ValueError):
             s.course = None
@@ -276,11 +273,10 @@ class SpartanTest(unittest.TestCase):
             s.stream = 0
 
         with self.assertRaises(ValueError):
-            s.stream = FALSE
+            s.stream = False
 
         with self.assertRaises(ValueError):
             s.stream = None
 
-
 if __name__ == "__main__":
-    unittest.main()
+   unittest.main()
